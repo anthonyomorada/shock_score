@@ -1,0 +1,11 @@
+---
+title: "RC_S5_ShockScore"
+author: "Anthony Morada"
+date: "10/15/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_knit$set(root.dir = '~/Documents/GitHub/RC_S5_ShockScore')
+```

@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1539617924189.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "628226656",
+    "id" : "218EE2E8",
+    "lastKnownWriteTime" : 1539618051,
+    "last_content_update" : 1539618051474,
+    "path" : "~/Documents/GitHub/RC_S5_ShockScore/rc_s5_shockscore.Rmd",
+    "project_path" : "rc_s5_shockscore.Rmd",
+    "properties" : {
+        "cursorPosition" : "9,69",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
