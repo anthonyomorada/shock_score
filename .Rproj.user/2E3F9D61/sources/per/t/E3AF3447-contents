@@ -1,0 +1,95 @@
+---
+title: "Protective Hypothermia Part 5"
+author: "Anthony Morada and Garrison Davis"
+date: "April 21, 2018"
+output: pdf_document
+---
+
+##Preparing Figures for Presentation  
+
+```{r setup, include=FALSE}
+# Working with cleaned and deidentified data. Saved within this repository.
+dt <- read.csv("./prot-hypothermia.v3.csv")
+dt$Name <- gsub("pt#", "Patient #", dt$Name)
+#VIS correction
+dt$VIS = dt$Dobutamine/60 + (100 * dt$EPI.Dose/60) + (10000 * dt$VASO.Dose/60) + (100 * dt$LEVO.Dose/60)
+dt$Name <- as.factor(dt$Name)
+
+require(ggplot2)
+knitr::opts_chunk$set(fig.width=10, fig.height=5) 
+```
+
+```{r plot, echo=FALSE}
+ggplot(data=dt, aes(x = Temp, y = Map, color = Name)) + 
+     geom_line() +
+     labs(x= "Temperature (C)", y= "MAP", title = "Hypothermia affects on MAP")
+
+# Hypothermia Time Course
+ggplot(data=dt, aes(x = Hour, y = Temp, color = Name)) + 
+     geom_line() +
+     labs(x= "Hour", y= "Temperature (C)") +
+     scale_y_continuous(breaks = seq(31, 38, 1)) + 
+     scale_x_continuous(breaks = seq(0, 40, 1)) +
+     theme(
+          panel.background = element_rect(fill = "transparent"), # bg of the panel
+          plot.background = element_rect(fill = "transparent"), # bg of the plot
+          #panel.grid.major = element_blank(), # get rid of major grid
+          #panel.grid.minor = element_blank(), # get rid of minor grid
+          legend.background = element_rect(fill = "transparent"), # get rid of legend bg
+          legend.box.background = element_rect(fill = "transparent"), # get rid of legend panel bg
+          text = element_text(size = 30)
+     )
+
+
+ggsave(last_plot(), filename = "./fig1.png", width = 27, height = 10, units = "in", bg = "transparent")
+
+
+ggplot(data=dt, aes(x = Hour, y = VIS, color = Name)) + 
+     geom_line() +
+     labs(x= "Hour", y= "VIS", title = "VIS Over Time")
+
+ggplot(data=dt, aes(x = Temp, y = VIS, color = Name)) + 
+     geom_point() +
+     geom_smooth(method = "lm", se = FALSE) +
+     geom_text(aes(label = Hour), position = position_nudge(y = -3)) +
+     labs(x= "Temperature (C)", y= "VIS", title = "Hypothermia VIS Score")
+
+#VIS vs Temperature
+ggplot(data=dt, aes(x = Temp, y = VIS, color = Name)) + 
+     geom_point(na.rm=T) + 
+     geom_smooth(method="lm", na.rm = T, se =F) +
+     labs(x= "Temperature (C)", y= "Vasoactive-Inotropic Score (VIS)") + 
+     scale_y_continuous(breaks = seq(0,100,10)) + 
+     scale_x_continuous(breaks = seq(30, 40, 1)) +
+     geom_text(aes(label = Hour), position = position_nudge(y = -3)) +
+     theme(
+          panel.background = element_rect(fill = "transparent"), # bg of the panel
+          plot.background = element_rect(fill = "transparent"), # bg of the plot
+          #panel.grid.major = element_blank(), # get rid of major grid
+          #panel.grid.minor = element_blank(), # get rid of minor grid
+          legend.background = element_rect(fill = "transparent"), # get rid of legend bg
+          legend.box.background = element_rect(fill = "transparent"), # get rid of legend panel bg
+          text = element_text(size = 30)
+     )
+ggsave(last_plot(), filename = "./fig2.png", width = 27, height = 10, units = "in", bg = "transparent")
+
+
+#Data Analysis
+m1 <- lm(VIS~Temp+Name, dt)
+summary(m1)
+
+
+
+
+summary(dt)
+
+     
+```
+
+## Table Information
+n = `r length(unique(dt$Name))`  
+`r unique(as.factor(dt$Name))` = `r summary(as.factor(dt$Name))`
+
+
+
+

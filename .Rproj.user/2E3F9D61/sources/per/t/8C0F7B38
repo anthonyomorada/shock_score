@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1542248436352.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "8C0F7B38",
+    "lastKnownWriteTime" : 4328647680,
+    "last_content_update" : 1542248436352,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "924F15BB",
+        "caption" : "WeightDurations",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=WeightDurations&cache_key=924F15BB",
+        "displayedObservations" : 158139,
+        "environment" : "",
+        "object" : "WeightDurations",
+        "preview" : 0,
+        "totalObservations" : 158139,
+        "variables" : 4
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

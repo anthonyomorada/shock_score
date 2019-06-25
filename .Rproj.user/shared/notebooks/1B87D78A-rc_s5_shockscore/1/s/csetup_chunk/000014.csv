@@ -1,0 +1,7 @@
+"0","library(dplyr)"
+"0","knitr::opts_chunk$set(echo = FALSE)"
+"0","knitr::opts_knit$set(root.dir = '~/Documents/GitHub/RC_S5_ShockScore')"
+"0","setwd(""~/Documents/GitHub/RC_S5_ShockScore"")"
+"0","dt <- read.csv(""./PressorData.csv"")"
+"0","dt$starttime <- as.POSIXct(strptime(dt$starttime, ""%Y-%m-%d %H:%M:%S""))"
+"0","dt$endtime <- as.POSIXct(strptime(dt$endtime, ""%Y-%m-%d %H:%M:%S""))"

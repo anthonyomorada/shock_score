@@ -2,10 +2,42 @@
 title: "RC_S5_ShockScore"
 author: "Anthony Morada"
 date: "10/15/2018"
-output: html_document
+output:
+  html_document: default
+  pdf_document: default
 ---
 
+
 ```{r setup, include=FALSE}
+library(dplyr)
+
 knitr::opts_chunk$set(echo = FALSE)
 knitr::opts_knit$set(root.dir = '~/Documents/GitHub/RC_S5_ShockScore')
+setwd("~/Documents/GitHub/RC_S5_ShockScore")
+
+dt <- read.csv("./PressorData.csv")
+dt$starttime <- as.POSIXct(strptime(dt$starttime, "%Y-%m-%d %H:%M:%S"))
+dt$endtime <- as.POSIXct(strptime(dt$endtime, "%Y-%m-%d %H:%M:%S"))
+
+wt <- read.csv("~/Documents/GitHub/RC_S5_ShockScore/WeightDurations.csv")
+# as.numeric(dt$endtime[1] - dt$starttime[1])*60 * dt$phenylrate[1] * 70
 ```
+
+The values for '_amount' for all drugs seem incorrect, The '_amount' columns for all drugs were recalculated and replaced: '_amount'(mcg) = duration(min) x 'rate'(mcg/kg/min) x weight(first recorded in kg)
+
+
+
+From Kals message for Shock Score:  
+- Interval = First 12 Hours
+- (Amount of Norepinephrine in mic/min + Amount of Epinephrine in mic/min + (MAP-65)*2 + Net fluid balance)/20  + 5 Points for any Dobutamine use + 10 Points for Vasopressin  
+  
+  
+
+
+```{r score.v1}
+
+
+```
+
+
+
